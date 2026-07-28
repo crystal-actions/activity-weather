@@ -1,0 +1,4 @@
+# A quiet repository reads as fog or snow — that is weather too.
+repo: hahwul/gee
+period: 7d
+output: examples/variants/quiet-card.svg

@@ -1,0 +1,15 @@
+# Every style at once, against a busy repository (accessible to the example generator) so the gallery has weather
+# worth looking at. Regenerate with: just examples
+repo: owasp-noir/noir
+period: 7d
+
+outputs:
+  - path: examples/showcase-card.svg
+  - path: examples/showcase-forecast.svg
+    style: forecast
+  - path: examples/showcase-banner.svg
+    style: banner
+  - path: examples/showcase-terminal.svg
+    style: terminal
+  - path: examples/showcase-badge.svg
+    style: minimal

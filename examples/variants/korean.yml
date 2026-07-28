@@ -1,0 +1,16 @@
+# Localized phrases via `messages`, one per condition, with placeholders.
+repo: hahwul/dalfox
+period: 14d
+output: examples/variants/korean-card.svg
+
+messages:
+  sunny: "쾌청 — 커밋 {commits}건이 쏟아집니다"
+  partly_cloudy: "대체로 맑음 — 꾸준한 커밋 흐름"
+  cloudy: "흐림 — 조용히 흘러가는 중"
+  rainy: "이슈 소나기 — 백로그가 차오릅니다"
+  stormy: "폭풍 경보 — 이슈가 몰려옵니다"
+  foggy: "안개 — 커밋이 거의 보이지 않습니다"
+  snowy: "결빙 — 저장소가 겨울잠에 들었습니다"
+  windy: "강풍 — 논의는 많고 머지는 적습니다"
+  rainbow: "폭풍 뒤 무지개 — 방금 릴리스되었습니다"
+  aurora: "오로라 — 스타가 쏟아지는 밤"

@@ -1,0 +1,9 @@
+.git
+bin
+lib
+spec
+examples
+docs
+*.md
+.github
+.ameba.yml

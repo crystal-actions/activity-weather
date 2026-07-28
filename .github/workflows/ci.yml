@@ -1,0 +1,103 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: latest
+      - name: Install dependencies
+        run: shards install
+      - name: Check formatting
+        run: crystal tool format --check
+      # The binary reports its own version and the release workflow derives the
+      # tag from it, so a file left behind at an older version has to fail here
+      # rather than at release time.
+      - name: Check version consistency
+        run: crystal run scripts/version_check.cr
+      # A malformed workflow fails the run before any job starts, which is
+      # hard to read in the UI; catch it here instead.
+      - name: Check workflow and action YAML
+        run: |
+          crystal eval 'require "yaml"
+            failed = false
+            Dir.glob(".github/workflows/*.yml", ".github/*.yml", "action.yml").each do |file|
+              begin
+                YAML.parse(File.read(file))
+              rescue ex
+                failed = true
+                puts "#{file}: #{ex.message}"
+              end
+            end
+            exit 1 if failed'
+      - name: Lint
+        run: |
+          if [ ! -x bin/ameba ]; then
+            mkdir -p bin
+            crystal build lib/ameba/bin/ameba.cr -o bin/ameba --release
+          fi
+          bin/ameba src spec scripts
+      - name: Run specs
+        run: crystal spec --order=random
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build image
+        run: docker build -t activity-weather:ci .
+      # A real run against this repository: the fetch needs the network, and
+      # the workflow token covers the request budget.
+      - name: Smoke test
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/ws
+          docker run --rm -w /ws -v /tmp/ws:/ws \
+            -e GITHUB_REPOSITORY="$GITHUB_REPOSITORY" \
+            -e INPUT_TOKEN="$TOKEN" -e INPUT_NO_COMMIT=true -e GITHUB_WORKSPACE=/ws \
+            activity-weather:ci
+          grep -q "<svg" /tmp/ws/ACTIVITY_WEATHER.svg
+
+  # Exercises the public entry point (action.yml) the way a consumer does;
+  # the docker job above bypasses it by running the image directly.
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      # action.yml ships a published image so consumers do not build one.
+      # Left as-is, this job would test that image instead of the code under
+      # review, so point it back at the Dockerfile first.
+      - name: Build the action from this checkout
+        run: |
+          sed -i 's|image: docker://.*|image: Dockerfile|' action.yml
+          grep -q 'image: Dockerfile' action.yml
+      - name: Run the action
+        id: weather
+        uses: ./
+        with:
+          no_commit: "true"
+          period: 14d
+      - name: Check outputs
+        run: |
+          test "${{ steps.weather.outputs.paths }}" = "ACTIVITY_WEATHER.svg"
+          test "${{ steps.weather.outputs.changed }}" = "false"
+          echo "${{ steps.weather.outputs.condition }}" \
+            | grep -Eq '^(sunny|partly_cloudy|cloudy|rainy|stormy|foggy|snowy|windy|rainbow|aurora)$'
+          echo "${{ steps.weather.outputs.temperature }}" | grep -Eq '^[0-9]+(\.[0-9]+)?$'
+          test -n "${{ steps.weather.outputs.phrase }}"
+          grep -q "<svg" ACTIVITY_WEATHER.svg
+          # That the dimensions reach a consumer as whole numbers at all;
+          # spec/runner_spec.cr pins what they are relative to the file.
+          echo "${{ steps.weather.outputs.width }}" | grep -Eq '^[1-9][0-9]*$'
+          echo "${{ steps.weather.outputs.height }}" | grep -Eq '^[1-9][0-9]*$'

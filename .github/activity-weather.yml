@@ -1,0 +1,8 @@
+period: 7d
+
+outputs:
+  - path: docs/weather-card.svg
+  - path: docs/weather-banner.svg
+    style: banner
+  - path: docs/weather-badge.svg
+    style: minimal

@@ -1,0 +1,21 @@
+name: activity-weather
+version: 0.1.0
+
+authors:
+  - HAHWUL <hahwul@gmail.com>
+
+description: |
+  Render your repository's recent activity as a weather report SVG — sunny commits, issue storms, foggy silence.
+
+license: MIT
+
+crystal: ">= 1.10.0"
+
+targets:
+  activity-weather:
+    main: src/main.cr
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    branch: master

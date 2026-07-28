@@ -1,0 +1,3 @@
+thresholds:
+  sunny_temp: 90
+  rain_humidity: 400

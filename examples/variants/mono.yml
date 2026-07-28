@@ -1,0 +1,7 @@
+# The mono preset desaturates the sky; only the icon accent survives.
+repo: hahwul/dalfox
+period: 14d
+output: examples/variants/mono-card.svg
+
+theme:
+  preset: mono

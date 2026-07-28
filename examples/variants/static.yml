@@ -1,0 +1,6 @@
+# No animation: rays do not turn, rain does not fall. For contexts where
+# motion distracts, or viewers who prefer it still.
+repo: owasp-noir/noir
+period: 7d
+output: examples/variants/static-card.svg
+animated: false

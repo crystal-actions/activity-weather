@@ -1,0 +1,31 @@
+repo: crystal-actions/activity-weather
+period: 2w
+style: banner
+outputs:
+  - path: docs/weather.svg
+  - path: docs/weather-dark.svg
+    mode: dark
+  - path: docs/weather-badge.svg
+    style: minimal
+animated: false
+forecast:
+  days: 14
+metrics:
+  stars: false
+  releases: true
+thresholds:
+  sunny_temp: 20
+  storm_issues_per_day: 5.5
+  fog_points_per_day: 0.1
+  rain_humidity: 80
+  windy_wind: 30
+  aurora_stars_per_day: 25
+  rainbow_min_temp: 10
+messages:
+  sunny: "쾌청 — 커밋 {commits}건이 쏟아집니다"
+  foggy: "안개 — {repo} 는 조용합니다"
+title: "Weather in {repo}"
+theme:
+  preset: midnight
+  mode: dark
+  font_family: "Inter, sans-serif"

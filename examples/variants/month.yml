@@ -1,0 +1,8 @@
+# A monthly window with a two-week forecast strip.
+repo: owasp-noir/noir
+period: 1m
+style: forecast
+output: examples/variants/month-forecast.svg
+
+forecast:
+  days: 14

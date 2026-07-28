@@ -1,0 +1,9 @@
+# Pinned dark mode — for READMEs that pair light/dark images with
+# #gh-light-mode-only / #gh-dark-mode-only links.
+repo: hahwul/dalfox
+period: 14d
+style: banner
+output: examples/variants/dark-banner.svg
+
+theme:
+  mode: dark

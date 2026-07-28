@@ -1,0 +1,23 @@
+name: Activity Weather
+
+on:
+  schedule:
+    # Daily, just after midnight UTC — the forecast strip buckets by UTC day.
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# A second run pushing while the first is mid-commit is the usual way these
+# workflows fail; queue them instead.
+concurrency:
+  group: activity-weather
+  cancel-in-progress: false
+
+jobs:
+  weather:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ./

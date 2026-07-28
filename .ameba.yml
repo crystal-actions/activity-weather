@@ -1,0 +1,11 @@
+Excluded:
+  - lib
+
+Documentation/DocumentationAdmonition:
+  Enabled: false
+
+# The terminal renderer's ASCII art contains unbalanced parentheses, which
+# rules out the preferred `%q()` delimiters for exactly those literals.
+Style/PercentLiteralDelimiters:
+  Excluded:
+    - src/activity_weather/renderers/terminal.cr
