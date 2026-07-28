@@ -5,8 +5,13 @@ on:
     branches: [main]
   pull_request:
 
+# The issues listing (which also carries the PR metrics) needs its own read
+# permissions — a `permissions:` block silently drops everything unlisted,
+# and the workflow token then gets a bare 403 from that endpoint.
 permissions:
   contents: read
+  issues: read
+  pull-requests: read
 
 jobs:
   test:

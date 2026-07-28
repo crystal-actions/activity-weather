@@ -24,8 +24,13 @@ on:
     - cron: "17 0 * * *"
   workflow_dispatch:
 
+# contents to push the SVG; issues + pull-requests because the activity
+# fetch reads the issues listing (a `permissions:` block drops everything
+# it does not name).
 permissions:
   contents: write
+  issues: read
+  pull-requests: read
 
 concurrency:
   group: activity-weather

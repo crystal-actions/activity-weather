@@ -356,12 +356,12 @@ module ActivityWeather
         # will still be exhausted in a second, so it stays fatal with a message
         # that says what to do about it. A secondary (burst) limit names its own
         # delay and clears on its own — waiting it out is the whole fix.
-        raise rate_limit_error(response) if response.headers["x-ratelimit-remaining"]? == "0"
+        raise rate_limit_error(response, context) if response.headers["x-ratelimit-remaining"]? == "0"
         if wait = ActivityWeather.retry_after(response, MAX_RETRY_AFTER)
           raise RetryableApiError.new(
             "GitHub API asked for a #{wait.total_seconds.round.to_i}s pause (#{context})", wait)
         end
-        raise rate_limit_error(response)
+        raise rate_limit_error(response, context)
       when 404
         raise ApiError.new("#{context}: not found or not accessible (pass a token with access?)")
       when 500..599
@@ -372,13 +372,16 @@ module ActivityWeather
       end
     end
 
-    private def rate_limit_error(response : HTTP::Client::Response) : ApiError
+    private def rate_limit_error(response : HTTP::Client::Response, context : String) : ApiError
       if response.headers["x-ratelimit-remaining"]? == "0"
         reset = response.headers["x-ratelimit-reset"]?.try(&.to_i64?)
         at = reset ? " (resets at #{Time.unix(reset).to_rfc3339})" : ""
         ApiError.new("GitHub API rate limit exceeded#{at} — pass a `token` to raise the limit")
       else
-        ApiError.new("GitHub API denied the request (#{response.status_code})")
+        # The usual cause in a workflow: a `permissions:` block that names
+        # some permissions and thereby drops the rest to none.
+        ApiError.new("GitHub API denied the request (403) for #{context} — the token lacks access; " \
+                     "in a workflow, add `issues: read` and `pull-requests: read` to `permissions:`")
       end
     end
 
