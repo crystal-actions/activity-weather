@@ -91,7 +91,8 @@ jobs:
       # default path, which would decide the outputs; test with an explicit
       # config instead so the assertions do not chase it.
       - name: Prepare a workspace config
-        run: printf 'period: 14d\noutput: ci-weather.svg\n' > ci-weather.yml
+        run: |
+          printf 'period: 14d\noutput: ci-weather.svg\n' > ci-weather.yml
       - name: Run the action
         id: weather
         uses: ./
