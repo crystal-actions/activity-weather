@@ -87,21 +87,26 @@ jobs:
         run: |
           sed -i 's|image: docker://.*|image: Dockerfile|' action.yml
           grep -q 'image: Dockerfile' action.yml
+      # The checkout carries this repository's own dogfood config at the
+      # default path, which would decide the outputs; test with an explicit
+      # config instead so the assertions do not chase it.
+      - name: Prepare a workspace config
+        run: printf 'period: 14d\noutput: ci-weather.svg\n' > ci-weather.yml
       - name: Run the action
         id: weather
         uses: ./
         with:
+          config: ci-weather.yml
           no_commit: "true"
-          period: 14d
       - name: Check outputs
         run: |
-          test "${{ steps.weather.outputs.paths }}" = "ACTIVITY_WEATHER.svg"
+          test "${{ steps.weather.outputs.paths }}" = "ci-weather.svg"
           test "${{ steps.weather.outputs.changed }}" = "false"
           echo "${{ steps.weather.outputs.condition }}" \
             | grep -Eq '^(sunny|partly_cloudy|cloudy|rainy|stormy|foggy|snowy|windy|rainbow|aurora)$'
           echo "${{ steps.weather.outputs.temperature }}" | grep -Eq '^[0-9]+(\.[0-9]+)?$'
           test -n "${{ steps.weather.outputs.phrase }}"
-          grep -q "<svg" ACTIVITY_WEATHER.svg
+          grep -q "<svg" ci-weather.svg
           # That the dimensions reach a consumer as whole numbers at all;
           # spec/runner_spec.cr pins what they are relative to the file.
           echo "${{ steps.weather.outputs.width }}" | grep -Eq '^[1-9][0-9]*$'
