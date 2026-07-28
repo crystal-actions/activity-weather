@@ -250,6 +250,10 @@ forecast:
 metrics:
   stars: true               # false skips the stargazer fetch
   releases: true            # false skips the release fetch (and rainbows)
+  # Note: the default workflow token cannot read stargazers (the starring
+  # API is closed to GitHub App tokens), so stars report as 0 with a
+  # warning. Pass a personal access token via the `token` input to enable
+  # star metrics and the aurora condition.
 
 thresholds:                 # the decision tree's dials (defaults shown)
   sunny_temp: 25.0

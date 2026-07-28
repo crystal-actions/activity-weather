@@ -81,7 +81,21 @@ module ActivityWeather
         -> { source.issues(repo, since).as(Fetched) },
       ]
       fetches << -> { source.releases(repo).as(Fetched) } if @config.metrics.releases?
-      fetches << -> { source.star_times(repo, since).as(Fetched) } if @config.metrics.stars?
+      if @config.metrics.stars?
+        # The default workflow token is a GitHub App installation token, and
+        # the starring API is closed to those — there is no permission to
+        # grant. Stars are flavor, not substance, so degrade to zero with a
+        # warning instead of failing the whole report.
+        fetches << -> do
+          begin
+            source.star_times(repo, since).as(Fetched)
+          rescue ex : ApiError
+            Annotations.warning("stargazers unavailable, reporting stars as 0 — pass a personal access " \
+                                "token via `token` to enable them, or set `metrics.stars: false` (#{ex.message})")
+            ([] of Time).as(Fetched)
+          end
+        end
+      end
 
       results = Concurrent.map(fetches, fetches.size, &.call)
 

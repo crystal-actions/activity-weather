@@ -126,6 +126,17 @@ describe ActivityWeather::Runner do
     end
   end
 
+  it "degrades to zero stars with a warning when the stargazer fetch is denied" do
+    with_workspace do |dir, outputs, log|
+      source = busy_source
+      source.star_error = ActivityWeather::ApiError.new("GitHub API denied the request (403) for stargazers")
+      run(ActivityWeather::Config.parse("repo: octo/repo"), source, dir).should eq(0)
+      log.to_s.should contain("::warning::")
+      log.to_s.should contain("reporting stars as 0")
+      outputs.call["condition"].should_not eq("aurora")
+    end
+  end
+
   it "turns an API failure into an error annotation and exit 1" do
     with_workspace do |dir, _outputs, log|
       source = FakeGitHubSource.new

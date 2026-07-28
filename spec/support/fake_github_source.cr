@@ -10,6 +10,8 @@ class FakeGitHubSource < ActivityWeather::GitHubSource
   property? truncated : Bool = false
   # Raised (once per call) by every fetch when set, for error-path specs.
   property error : Exception? = nil
+  # Raised by the star fetch only, for the degraded-stars path.
+  property star_error : Exception? = nil
 
   getter requested_repos = [] of String
   getter requested_windows = [] of {Time, Time}
@@ -39,6 +41,9 @@ class FakeGitHubSource < ActivityWeather::GitHubSource
 
   def star_times(repo : String, since : Time) : Array(Time)
     record_call(repo)
+    if pending = star_error
+      raise pending
+    end
     @requested_sinces << since
     star_times_value
   end
