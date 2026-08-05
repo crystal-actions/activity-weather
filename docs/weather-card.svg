@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="240" viewBox="0 0 480 240">
-  <style>@keyframes aw-drift{50%{transform:translateX(5px)}}.aw-cloud{animation:aw-drift 7s ease-in-out infinite}@keyframes aw-glow{50%{opacity:1}}.aw-arc{animation:aw-glow 5s ease-in-out infinite}@media (prefers-reduced-motion:reduce){*{animation:none !important}}.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#3D8FD6}.aw-s1{stop-color:#8FD0F5}.aw-c0{stop-color:#ffffff}.aw-c1{stop-color:#d7dee8}.aw-bg{fill:transparent}@media (prefers-color-scheme:dark){.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#12295C}.aw-s1{stop-color:#3A5FA0}.aw-c0{stop-color:#b8c4d4}.aw-c1{stop-color:#8494ac}.aw-bg{fill:transparent}}</style>
+  <style>@keyframes aw-spin{to{transform:rotate(360deg)}}.aw-rays{animation:aw-spin 90s linear infinite;transform-origin:32px 32px}@keyframes aw-drift{50%{transform:translateX(5px)}}.aw-cloud{animation:aw-drift 7s ease-in-out infinite}@media (prefers-reduced-motion:reduce){*{animation:none !important}}.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#5B8FC7}.aw-s1{stop-color:#8FB8DC}.aw-c0{stop-color:#ffffff}.aw-c1{stop-color:#d7dee8}.aw-bg{fill:transparent}@media (prefers-color-scheme:dark){.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#1B2A47}.aw-s1{stop-color:#45608A}.aw-c0{stop-color:#b8c4d4}.aw-c1{stop-color:#8494ac}.aw-bg{fill:transparent}}</style>
   <defs>
     <linearGradient id="aw-sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" class="aw-s0"/>
@@ -17,21 +17,21 @@
       <stop offset="0" stop-color="#7A8699"/>
       <stop offset="1" stop-color="#56637A"/>
     </linearGradient>
-    <symbol id="aw-i-rainbow" viewBox="0 0 64 64">
-      <g fill="none" stroke-width="3.6" stroke-linecap="round" class="aw-arc" opacity="0.92">
-        <path d="M5 46 A27 27 0 0 1 59 46" stroke="#FF5E5B"/>
-        <path d="M9.5 46 A22.5 22.5 0 0 1 54.5 46" stroke="#FFB400"/>
-        <path d="M14 46 A18 18 0 0 1 50 46" stroke="#7ED957"/>
-        <path d="M18.5 46 A13.5 13.5 0 0 1 45.5 46" stroke="#38B6FF"/>
-        <path d="M23 46 A9 9 0 0 1 41 46" stroke="#8C52FF"/>
+    <symbol id="aw-i-partly_cloudy" viewBox="0 0 64 64">
+      <g transform="translate(16,-8) scale(0.72)">
+      <g class="aw-rays" stroke="#FFC53D" stroke-width="4.05" stroke-linecap="round">
+        <line x1="50.9" y1="32" x2="58.1" y2="32"/>
+        <line x1="45.36" y1="45.36" x2="50.46" y2="50.46"/>
+        <line x1="32" y1="50.9" x2="32" y2="58.1"/>
+        <line x1="18.64" y1="45.36" x2="13.54" y2="50.46"/>
+        <line x1="13.1" y1="32" x2="5.9" y2="32"/>
+        <line x1="18.64" y1="18.64" x2="13.54" y2="13.54"/>
+        <line x1="32" y1="13.1" x2="32" y2="5.9"/>
+        <line x1="45.36" y1="18.64" x2="50.46" y2="13.54"/>
       </g>
-      <g class="aw-cloud" transform="translate(-9,28) scale(0.5)" fill="url(#awg-cloud)">
-        <circle cx="19" cy="40" r="11"/>
-        <circle cx="33" cy="31" r="14"/>
-        <circle cx="45" cy="40" r="10"/>
-        <rect x="14" y="36" width="42" height="15" rx="7.5"/>
+        <circle cx="32" cy="32" r="14" fill="url(#awg-sun)"/>
       </g>
-      <g class="aw-cloud" transform="translate(30,32) scale(0.42)" fill="url(#awg-cloud)">
+      <g class="aw-cloud" transform="translate(-2,10) scale(0.92)" fill="url(#awg-cloud)">
         <circle cx="19" cy="40" r="11"/>
         <circle cx="33" cy="31" r="14"/>
         <circle cx="45" cy="40" r="10"/>
@@ -42,25 +42,18 @@
   </defs>
   <rect x="0.5" y="0.5" width="479" height="239" rx="16" fill="url(#aw-sky)" class="aw-stroke"/>
   <g clip-path="url(#aw-card)">
-    <g fill="none" stroke-width="11" opacity="0.22">
-      <path d="M210 262 A210 210 0 0 1 630 262" stroke="#FF5E5B"/>
-      <path d="M223 262 A197 197 0 0 1 617 262" stroke="#FFB400"/>
-      <path d="M236 262 A184 184 0 0 1 604 262" stroke="#7ED957"/>
-      <path d="M249 262 A171 171 0 0 1 591 262" stroke="#38B6FF"/>
-      <path d="M262 262 A158 158 0 0 1 578 262" stroke="#8C52FF"/>
-    </g>
   </g>
   <text x="28" y="37" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" class="aw-ink">crystal-actions/activity-weather</text>
   <text x="452" y="34" text-anchor="end" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12" class="aw-sub">last 7 days</text>
   <text x="452" y="52" text-anchor="end" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="10.5" class="aw-sub" opacity="0.8">0 km/h · 50%</text>
-  <use href="#aw-i-rainbow" x="30" y="74" width="116" height="116"/>
-  <text x="176" y="153" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="54" font-weight="700" class="aw-ink">25°</text>
-  <text x="282.5" y="150" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="24" fill="#FFB020">↗</text>
-  <text x="178" y="178" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="1.5" class="aw-sub">RAINBOW</text>
-  <text x="178" y="200" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12.5" font-style="italic" class="aw-sub">A rainbow after the storm — freshly re…</text>
+  <use href="#aw-i-partly_cloudy" x="30" y="74" width="116" height="116"/>
+  <text x="176" y="153" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="54" font-weight="700" class="aw-ink">14°</text>
+  <text x="282.5" y="150" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="24" fill="#F5C453">↘</text>
+  <text x="178" y="178" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="1.5" class="aw-sub">PARTLY CLOUDY</text>
+  <text x="178" y="200" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12.5" font-style="italic" class="aw-sub">Fair weather with a steady stream of c…</text>
   <line x1="28" y1="212" x2="452" y2="212" class="aw-stroke" stroke-width="1"/>
-  <text x="28" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">13<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">commits</tspan></text>
+  <text x="28" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">7<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">commits</tspan></text>
   <text x="136" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">0<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">prs</tspan></text>
   <text x="244" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">0<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">issues</tspan></text>
-  <text x="352" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">+1<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">stars</tspan></text>
+  <text x="352" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">+0<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">stars</tspan></text>
 </svg>
