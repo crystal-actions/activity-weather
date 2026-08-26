@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="240" viewBox="0 0 480 240">
-  <style>@keyframes aw-drift{50%{transform:translateX(5px)}}@keyframes aw-drift-back{50%{transform:translateX(-4px)}}.aw-cloud{animation:aw-drift 7s ease-in-out infinite}.aw-cloud-back{animation:aw-drift-back 9s ease-in-out infinite}@media (prefers-reduced-motion:reduce){*{animation:none !important}}.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#6B7E93}.aw-s1{stop-color:#9AA9BA}.aw-c0{stop-color:#ffffff}.aw-c1{stop-color:#d7dee8}.aw-bg{fill:transparent}@media (prefers-color-scheme:dark){.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#232C3A}.aw-s1{stop-color:#48566B}.aw-c0{stop-color:#b8c4d4}.aw-c1{stop-color:#8494ac}.aw-bg{fill:transparent}}</style>
+  <style>@keyframes aw-fog-l{50%{transform:translateX(6px)}}@keyframes aw-fog-r{50%{transform:translateX(-6px)}}.aw-fog-a{animation:aw-fog-l 6s ease-in-out infinite}.aw-fog-b{animation:aw-fog-r 8s ease-in-out infinite}@media (prefers-reduced-motion:reduce){*{animation:none !important}}.aw-ink{fill:#243140}.aw-sub{fill:rgba(36,49,64,0.76)}.aw-faint{fill:rgba(36,49,64,0.24)}.aw-stroke{stroke:rgba(36,49,64,0.24)}.aw-s0{stop-color:#9AA5B1}.aw-s1{stop-color:#C6CDD5}.aw-c0{stop-color:#ffffff}.aw-c1{stop-color:#d7dee8}.aw-bg{fill:transparent}@media (prefers-color-scheme:dark){.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#252A31}.aw-s1{stop-color:#4A525C}.aw-c0{stop-color:#b8c4d4}.aw-c1{stop-color:#8494ac}.aw-bg{fill:transparent}}</style>
   <defs>
     <linearGradient id="aw-sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" class="aw-s0"/>
@@ -17,35 +17,36 @@
       <stop offset="0" stop-color="#7A8699"/>
       <stop offset="1" stop-color="#56637A"/>
     </linearGradient>
-    <symbol id="aw-i-cloudy" viewBox="0 0 64 64">
-      <g class="aw-cloud-back" transform="translate(10,-7) scale(0.72)" fill="url(#awg-cloud)" opacity="0.55">
+    <symbol id="aw-i-foggy" viewBox="0 0 64 64">
+      <g class="aw-cloud" transform="translate(2,-10) scale(0.88)" fill="url(#awg-cloud)" opacity="0.75">
         <circle cx="19" cy="40" r="11"/>
         <circle cx="33" cy="31" r="14"/>
         <circle cx="45" cy="40" r="10"/>
         <rect x="14" y="36" width="42" height="15" rx="7.5"/>
       </g>
-      <g class="aw-cloud" transform="translate(-1,6) scale(0.95)" fill="url(#awg-cloud)">
-        <circle cx="19" cy="40" r="11"/>
-        <circle cx="33" cy="31" r="14"/>
-        <circle cx="45" cy="40" r="10"/>
-        <rect x="14" y="36" width="42" height="15" rx="7.5"/>
+      <g stroke="#AEBBC9" stroke-width="4.5" stroke-linecap="round">
+        <line class="aw-fog-a" x1="14" y1="47" x2="46" y2="47"/>
+        <line class="aw-fog-b" x1="20" y1="54" x2="52" y2="54"/>
+        <line class="aw-fog-a" x1="12" y1="61" x2="38" y2="61"/>
       </g>
     </symbol>
     <clipPath id="aw-card"><rect x="1" y="1" width="478" height="238" rx="16"/></clipPath>
   </defs>
   <rect x="0.5" y="0.5" width="479" height="239" rx="16" fill="url(#aw-sky)" class="aw-stroke"/>
   <g clip-path="url(#aw-card)">
+    <rect class="aw-fog-a" x="-30" y="98" width="360" height="12" rx="6" fill="#ffffff" opacity="0.2"/>
+    <rect class="aw-fog-b" x="60" y="138" width="450" height="14" rx="7" fill="#ffffff" opacity="0.16"/>
   </g>
   <text x="28" y="37" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" class="aw-ink">crystal-actions/activity-weather</text>
   <text x="452" y="34" text-anchor="end" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12" class="aw-sub">last 7 days</text>
   <text x="452" y="52" text-anchor="end" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="10.5" class="aw-sub" opacity="0.8">0 km/h · 50%</text>
-  <use href="#aw-i-cloudy" x="30" y="74" width="116" height="116"/>
-  <text x="176" y="153" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="54" font-weight="700" class="aw-ink">10°</text>
-  <text x="282.5" y="150" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="24" fill="#AAB8C8">↘</text>
-  <text x="178" y="178" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="1.5" class="aw-sub">CLOUDY</text>
-  <text x="178" y="200" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12.5" font-style="italic" class="aw-sub">Overcast — things are ticking along qu…</text>
+  <use href="#aw-i-foggy" x="30" y="74" width="116" height="116"/>
+  <text x="176" y="153" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="54" font-weight="700" class="aw-ink">9°</text>
+  <text x="250.1" y="150" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="24" fill="#C3CCD4">↘</text>
+  <text x="178" y="178" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="1.5" class="aw-sub">FOGGY</text>
+  <text x="178" y="200" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12.5" font-style="italic" class="aw-sub">Fog has settled in — barely a commit i…</text>
   <line x1="28" y1="212" x2="452" y2="212" class="aw-stroke" stroke-width="1"/>
-  <text x="28" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">2<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">commits</tspan></text>
+  <text x="28" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">1<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">commits</tspan></text>
   <text x="136" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">0<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">prs</tspan></text>
   <text x="244" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">0<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">issues</tspan></text>
   <text x="352" y="232" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" class="aw-ink">+0<tspan dx="5" font-size="10.5" font-weight="400" class="aw-sub">stars</tspan></text>

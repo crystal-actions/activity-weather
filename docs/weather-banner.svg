@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="840" height="220" viewBox="0 0 840 220">
-  <style>@keyframes aw-drift{50%{transform:translateX(5px)}}@keyframes aw-drift-back{50%{transform:translateX(-4px)}}.aw-cloud{animation:aw-drift 7s ease-in-out infinite}.aw-cloud-back{animation:aw-drift-back 9s ease-in-out infinite}@keyframes aw-drift-far{50%{transform:translateX(14px)}}@keyframes aw-drift-near{50%{transform:translateX(-11px)}}.aw-layer-far{animation:aw-drift-far 34s ease-in-out infinite}.aw-layer-near{animation:aw-drift-near 22s ease-in-out infinite}@media (prefers-reduced-motion:reduce){*{animation:none !important}}.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#6B7E93}.aw-s1{stop-color:#9AA9BA}.aw-c0{stop-color:#ffffff}.aw-c1{stop-color:#d7dee8}.aw-bg{fill:transparent}@media (prefers-color-scheme:dark){.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#232C3A}.aw-s1{stop-color:#48566B}.aw-c0{stop-color:#b8c4d4}.aw-c1{stop-color:#8494ac}.aw-bg{fill:transparent}}</style>
+  <style>@keyframes aw-fog-l{50%{transform:translateX(6px)}}@keyframes aw-fog-r{50%{transform:translateX(-6px)}}.aw-fog-a{animation:aw-fog-l 6s ease-in-out infinite}.aw-fog-b{animation:aw-fog-r 8s ease-in-out infinite}@keyframes aw-drift-far{50%{transform:translateX(14px)}}@keyframes aw-drift-near{50%{transform:translateX(-11px)}}.aw-layer-far{animation:aw-drift-far 34s ease-in-out infinite}.aw-layer-near{animation:aw-drift-near 22s ease-in-out infinite}@media (prefers-reduced-motion:reduce){*{animation:none !important}}.aw-ink{fill:#243140}.aw-sub{fill:rgba(36,49,64,0.76)}.aw-faint{fill:rgba(36,49,64,0.24)}.aw-stroke{stroke:rgba(36,49,64,0.24)}.aw-s0{stop-color:#9AA5B1}.aw-s1{stop-color:#C6CDD5}.aw-c0{stop-color:#ffffff}.aw-c1{stop-color:#d7dee8}.aw-bg{fill:transparent}@media (prefers-color-scheme:dark){.aw-ink{fill:#ffffff}.aw-sub{fill:rgba(255,255,255,0.78)}.aw-faint{fill:rgba(255,255,255,0.28)}.aw-stroke{stroke:rgba(255,255,255,0.28)}.aw-s0{stop-color:#252A31}.aw-s1{stop-color:#4A525C}.aw-c0{stop-color:#b8c4d4}.aw-c1{stop-color:#8494ac}.aw-bg{fill:transparent}}</style>
   <defs>
     <linearGradient id="aw-sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" class="aw-s0"/>
@@ -17,18 +17,17 @@
       <stop offset="0" stop-color="#7A8699"/>
       <stop offset="1" stop-color="#56637A"/>
     </linearGradient>
-    <symbol id="aw-i-cloudy" viewBox="0 0 64 64">
-      <g class="aw-cloud-back" transform="translate(10,-7) scale(0.72)" fill="url(#awg-cloud)" opacity="0.55">
+    <symbol id="aw-i-foggy" viewBox="0 0 64 64">
+      <g class="aw-cloud" transform="translate(2,-10) scale(0.88)" fill="url(#awg-cloud)" opacity="0.75">
         <circle cx="19" cy="40" r="11"/>
         <circle cx="33" cy="31" r="14"/>
         <circle cx="45" cy="40" r="10"/>
         <rect x="14" y="36" width="42" height="15" rx="7.5"/>
       </g>
-      <g class="aw-cloud" transform="translate(-1,6) scale(0.95)" fill="url(#awg-cloud)">
-        <circle cx="19" cy="40" r="11"/>
-        <circle cx="33" cy="31" r="14"/>
-        <circle cx="45" cy="40" r="10"/>
-        <rect x="14" y="36" width="42" height="15" rx="7.5"/>
+      <g stroke="#AEBBC9" stroke-width="4.5" stroke-linecap="round">
+        <line class="aw-fog-a" x1="14" y1="47" x2="46" y2="47"/>
+        <line class="aw-fog-b" x1="20" y1="54" x2="52" y2="54"/>
+        <line class="aw-fog-a" x1="12" y1="61" x2="38" y2="61"/>
       </g>
     </symbol>
     <clipPath id="aw-banner"><rect x="1" y="1" width="838" height="218" rx="16"/></clipPath>
@@ -69,12 +68,15 @@
         <rect x="14" y="36" width="42" height="15" rx="7.5"/>
       </g>
     </g>
-    <path d="M0 220 L0 161.51 C56 161.51 112 143.11 168 143.11 C224 143.11 280 155.42 336 155.42 C392 155.42 448 149.69 504 149.69 C560 149.69 616 163.71 672 163.71 C728 163.71 784 133.73 840 133.73 L840 220 Z" fill="rgba(18,38,58,0.28)"/>
-    <path d="M0 220 L0 168.53 C56 168.53 112 184.73 168 184.73 C224 184.73 280 169.68 336 169.68 C392 169.68 448 172.46 504 172.46 C560 172.46 616 163.93 672 163.93 C728 163.93 784 185.14 840 185.14 L840 220 Z" fill="rgba(9,22,38,0.42)"/>
+    <rect class="aw-fog-a" x="33.46" y="128" width="920" height="16" rx="8" fill="#ffffff" opacity="0.2"/>
+    <rect class="aw-fog-b" x="-14.96" y="150" width="920" height="16" rx="8" fill="#ffffff" opacity="0.16"/>
+    <rect class="aw-fog-a" x="17.42" y="170" width="920" height="16" rx="8" fill="#ffffff" opacity="0.18"/>
+    <path d="M0 220 L0 149.69 C56 149.69 112 163.71 168 163.71 C224 163.71 280 133.73 336 133.73 C392 133.73 448 142.24 504 142.24 C560 142.24 616 160.34 672 160.34 C728 160.34 784 143.53 840 143.53 L840 220 Z" fill="rgba(18,38,58,0.28)"/>
+    <path d="M0 220 L0 172.46 C56 172.46 112 163.93 168 163.93 C224 163.93 280 185.14 336 185.14 C392 185.14 448 179.69 504 179.69 C560 179.69 616 169.08 672 169.08 C728 169.08 784 157.62 840 157.62 L840 220 Z" fill="rgba(9,22,38,0.42)"/>
   </g>
   <text x="36" y="64" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" class="aw-ink" paint-order="stroke" stroke="rgba(8,20,32,0.3)" stroke-width="4">crystal-actions/activity-weather</text>
-  <text x="36" y="92" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="14" class="aw-sub" paint-order="stroke" stroke="rgba(8,20,32,0.3)" stroke-width="3">Overcast — things are ticking along quietly</text>
-  <rect x="36" y="106" width="127.4" height="26" rx="13" fill="rgba(10,24,40,0.28)" class="aw-stroke"/>
-  <text x="99.7" y="123" text-anchor="middle" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#F2F6FA">10° · CLOUDY ↘</text>
-  <text x="36" y="200" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12" fill="rgba(242,246,250,0.88)">2 commits · 0 prs · 0 issues · +0 stars · last 7 days</text>
+  <text x="36" y="92" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="14" class="aw-sub" paint-order="stroke" stroke="rgba(8,20,32,0.3)" stroke-width="3">Fog has settled in — barely a commit in sight</text>
+  <rect x="36" y="106" width="112.45" height="26" rx="13" fill="rgba(10,24,40,0.28)" class="aw-stroke"/>
+  <text x="92.22" y="123" text-anchor="middle" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#F2F6FA">9° · FOGGY ↘</text>
+  <text x="36" y="200" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12" fill="rgba(242,246,250,0.88)">1 commits · 0 prs · 0 issues · +0 stars · last 7 days</text>
 </svg>
