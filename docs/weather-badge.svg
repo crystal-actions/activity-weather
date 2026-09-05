@@ -41,5 +41,5 @@
   </defs>
   <rect x="0.5" y="0.5" width="170.6" height="27" rx="13.5" fill="url(#aw-sky)" class="aw-stroke"/>
   <use href="#aw-i-partly_cloudy" x="8" y="6" width="16" height="16"/>
-  <text x="31" y="19" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" class="aw-ink">partly cloudy · 14°</text>
+  <text x="31" y="19" font-family="-apple-system, &#39;Segoe UI&#39;, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" class="aw-ink">partly cloudy · 13°</text>
 </svg>
